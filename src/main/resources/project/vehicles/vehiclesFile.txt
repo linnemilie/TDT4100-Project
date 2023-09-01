@@ -1,0 +1,6 @@
+0;van;Nellie;4;Manual;500
+1;van;Nora;3;Automatic;600
+2;van;Vera;6;Manual;900
+3;van;Louise;3;Automatic;600
+4;van;Anne;3;Automatic;600
+5;motorcycle;Roar;2;Manual;400

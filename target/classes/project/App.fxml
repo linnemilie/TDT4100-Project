@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="730.0" style="-fx-background-color: f4f4f9;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ProjectController">
+   <children>
+      <Pane fx:id="datePickerPane" layoutX="-1.0" layoutY="107.0" prefHeight="102.0" prefWidth="730.0" style="-fx-background-color: f4f4f9; -fx-background-radius: 5;">
+         <children>
+            <DatePicker fx:id="endDate" layoutX="319.0" layoutY="38.0" onAction="#resetVehicleGrid" prefHeight="26.0" prefWidth="229.0" promptText="Chose enddate" />
+            <DatePicker fx:id="startDate" layoutX="79.0" layoutY="37.0" onAction="#resetVehicleGrid" prefHeight="26.0" prefWidth="221.0" promptText="Choose startdate" />
+            <Button layoutX="569.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleCheckDates" style="-fx-background-color: #13375b; -fx-background-radius: 5;" text="Check date" textFill="#f8f8f8" />
+            <Label layoutX="79.0" layoutY="13.0" prefHeight="17.0" prefWidth="79.0" text="From:" />
+            <Label layoutX="319.0" layoutY="14.0" prefHeight="17.0" prefWidth="39.0" text="To:" />
+         </children>
+      </Pane>
+      <Pane fx:id="driverInformation" disable="true" layoutX="11.0" layoutY="473.0" prefHeight="223.0" prefWidth="705.0">
+         <children>
+            <TextField fx:id="firstName" layoutX="14.0" layoutY="23.0" prefHeight="26.0" prefWidth="152.0" promptText="*First Name" />
+            <TextField fx:id="lastName" layoutX="180.0" layoutY="23.0" promptText="*Last Name " />
+            <TextField fx:id="phoneNumber" layoutX="13.0" layoutY="66.0" prefHeight="26.0" prefWidth="151.0" promptText="*Phonenumber" />
+            <TextField fx:id="email" layoutX="180.0" layoutY="66.0" promptText="*Email" />
+            <Button fx:id="book" layoutX="570.0" layoutY="169.0" mnemonicParsing="false" onAction="#handleBookButton" prefHeight="47.0" prefWidth="135.0" style="-fx-background-color: #13375b; -fx-background-radius: 5;" text="Book" textFill="#f8f8f8" />
+            <TextField fx:id="age" layoutX="13.0" layoutY="111.0" prefHeight="26.0" prefWidth="151.0" promptText="*Age" />
+            <Label fx:id="chosenVehicle" layoutX="382.0" layoutY="13.0" prefHeight="132.0" prefWidth="309.0" />
+            <TextField fx:id="discountTextField" layoutX="13.0" layoutY="158.0" prefHeight="26.0" prefWidth="152.0" promptText="Discount code" />
+            <Button fx:id="discountbutton" layoutX="180.0" layoutY="158.0" mnemonicParsing="false" onAction="#handleValidateDiscount" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: #13375b; -fx-background-radius: 5;" text="Validate" textFill="#f8f8f8" />
+            <Label fx:id="approvedDiscountLabel" layoutX="14.0" layoutY="192.0" prefHeight="17.0" prefWidth="196.0" text="Your discount has been approved. " visible="false" />
+         </children>
+      </Pane>
+      <Pane prefHeight="107.0" prefWidth="730.0" style="-fx-background-color: #DFE1D9;">
+         <children>
+            <ImageView fitHeight="83.0" fitWidth="664.0" layoutX="33.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@VehicleHeader.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="adminLogin" layoutY="106.0" prefHeight="657.0" prefWidth="730.0" style="-fx-background-color: #ffffff;" visible="false">
+         <children>
+            <TextField fx:id="adminUsername" layoutX="248.0" layoutY="248.0" promptText="Username" />
+            <PasswordField fx:id="adminPassword" layoutX="248.0" layoutY="281.0" promptText="Password" />
+            <Button fx:id="adminLoginButton" layoutX="420.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleAdminModeLogin" prefHeight="21.0" prefWidth="62.0" style="-fx-background-color: #13375b; -fx-background-radius: 5;" text="Login" textFill="#f8f8f8" />
+         </children>
+      </Pane>
+      <Pane fx:id="adminPane" layoutY="105.0" prefHeight="657.0" prefWidth="730.0" style="-fx-background-color: #ffffff;" visible="false">
+         <children>
+            <TextField fx:id="searchField" layoutX="77.0" layoutY="121.0" prefHeight="26.0" prefWidth="274.0" promptText="Searchword" />
+            <Label layoutX="75.0" layoutY="31.0" prefHeight="90.0" prefWidth="373.0" text="Search for bookings with bookingreference, customers phonenumber or write &quot;all&quot; for a complete list of all bookings." wrapText="true" />
+            <Button fx:id="adminsearchButton" layoutX="365.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleSearchForBookings" prefHeight="31.0" prefWidth="106.0" style="-fx-background-color: #13375b; -fx-background-radius: 5;" text="Search" textFill="#f8f8f8" />
+            <TextArea fx:id="adminOutput" layoutX="64.0" layoutY="170.0" prefHeight="423.0" prefWidth="409.0" visible="false" />
+            <Label layoutX="509.0" layoutY="115.0" prefHeight="39.0" prefWidth="135.0" text="Add new discount">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newDiscountCode" layoutX="509.0" layoutY="157.0" promptText="Discount code" />
+            <TextField fx:id="newDiscountValue" layoutX="509.0" layoutY="193.0" promptText="Discount %" />
+            <Button layoutX="596.0" layoutY="229.0" mnemonicParsing="false" onAction="#addNewDiscount" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: #13375b; -fx-background-radius: 5;" text="Add" textFill="#f8f8f8" />
+            <Label layoutX="507.0" layoutY="301.0" prefHeight="31.0" prefWidth="117.0" text="Remove discount">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="oldDiscountCode" layoutX="507.0" layoutY="330.0" promptText="Discount code" />
+            <Button layoutX="598.0" layoutY="370.0" mnemonicParsing="false" onAction="#removeDiscount" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: #13375b; -fx-background-radius: 5;" text="Remove" textFill="#f8f8f8" />
+            <Label fx:id="successLabelNewDiscount" layoutX="534.0" layoutY="270.0" text="Successfully added!" visible="false" />
+            <Label fx:id="successLabelDiscountRemoved" layoutX="532.0" layoutY="406.0" text="Successfully removed!" visible="false" />
+         </children>
+      </Pane>
+      <Button fx:id="adminBackButton" layoutX="637.0" layoutY="709.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="39.0" prefWidth="79.0" style="-fx-background-color: #13375b; -fx-background-radius: 5;" text="Back" textFill="#f8f8f8" />
+      <Button fx:id="adminButton" layoutX="637.0" layoutY="709.0" mnemonicParsing="false" onAction="#handleAdminMode" prefHeight="39.0" prefWidth="79.0" style="-fx-background-color: #13375b; -fx-background-radius: 5;" text="Admin" textFill="#f8f8f8" />
+      <GridPane fx:id="vehicleGrid" layoutX="59.0" layoutY="213.0" prefHeight="256.0" prefWidth="609.0" visible="false">
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <Pane fx:id="bookingConfirmationSide" layoutY="106.0" prefHeight="657.0" prefWidth="730.0" style="-fx-background-color: #FFFFFF;" visible="false">
+         <children>
+            <Label layoutX="228.0" layoutY="144.0" prefHeight="55.0" prefWidth="283.0" text="Booking Confirmation" textAlignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="bookingConfirmationLabel" layoutX="37.0" layoutY="212.0" prefHeight="433.0" prefWidth="683.0" />
+         </children>
+      </Pane>
+   </children>
+</Pane>
